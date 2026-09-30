@@ -27,7 +27,7 @@ SITE = {
 ARTICLES = [
     {
         "slug": "stinky-tofu",
-        "title": "Stinky Tofu in Changsha: A First-Timer's Guide",
+        "title": "Changsha Stinky Tofu: What It Tastes Like and Where Locals Actually Line Up",
         "kw": "changsha stinky tofu",
         "desc": "What Changsha stinky tofu actually tastes like, how much it costs, and how to order your first plate without regret.",
         "body": [
@@ -45,7 +45,7 @@ ARTICLES = [
     },
     {
         "slug": "10-street-foods",
-        "title": "10 Street Foods You Must Try in Changsha",
+        "title": "Changsha Street Food: 10 Dishes to Try, Ranked by a Local",
         "kw": "changsha street food",
         "desc": "A shortlist of the ten street foods worth your time in Changsha, with rough prices and what to expect from each.",
         "body": [
@@ -76,7 +76,7 @@ ARTICLES = [
     },
     {
         "slug": "spicy-level",
-        "title": "How Spicy Is Hunan Food, Really?",
+        "title": "How Spicy Is Hunan Food? A Dish-by-Dish Heat Guide for First-Timers",
         "kw": "hunan food spicy level",
         "desc": "An honest breakdown of Hunan spice levels, what 微辣 actually means, and how to order if you can't handle the heat.",
         "body": [
@@ -95,7 +95,7 @@ ARTICLES = [
     },
     {
         "slug": "night-markets",
-        "title": "Changsha Night Markets: Where Locals Actually Eat",
+        "title": "Changsha Night Markets: Where Locals Actually Eat and What to Order",
         "kw": "changsha night market",
         "desc": "How Changsha night markets work, when to go, what things cost, and how to tell a good stall from a tourist trap.",
         "body": [
@@ -114,7 +114,7 @@ ARTICLES = [
     },
     {
         "slug": "rice-noodles",
-        "title": "Rice Noodles (米粉): The Breakfast of Changsha",
+        "title": "Changsha Rice Noodles (米粉): How to Order Breakfast Like a Local",
         "kw": "changsha rice noodles",
         "desc": "How Changsha rice noodles work, what toppings to order, what they cost, and why locals eat them for breakfast.",
         "body": [
@@ -133,7 +133,7 @@ ARTICLES = [
     },
     {
         "slug": "non-spicy",
-        "title": "What to Eat in Changsha If You Can't Handle Spice",
+        "title": "Changsha Without the Chili: What to Order If You Can't Handle Spice",
         "kw": "changsha non spicy food",
         "desc": "A practical list of Changsha foods that are genuinely mild, plus exactly what to say when ordering.",
         "body": [
@@ -151,7 +151,7 @@ ARTICLES = [
     },
     {
         "slug": "sugar-oil-baba",
-        "title": "Sugar Oil Baba (糖油粑粑): Changsha's Sweetest Snack",
+        "title": "Sugar Oil Baba (糖油粑粑): Changsha's Sweetest Snack and Where to Find It",
         "kw": "sugar oil baba",
         "desc": "What sugar oil baba is, how it's made, what it costs, and why it's the one Changsha snack with no chili in it.",
         "body": [
@@ -170,7 +170,7 @@ ARTICLES = [
     },
     {
         "slug": "street-food-prices",
-        "title": "A Foreigner's Price Guide to Changsha Street Food",
+        "title": "Changsha Street Food Prices: What You'll Actually Pay for 10 Popular Dishes",
         "kw": "changsha street food prices",
         "desc": "Realistic price ranges for Changsha street food, what counts as tourist pricing, and how to pay without cash.",
         "body": [
@@ -191,7 +191,7 @@ ARTICLES = [
     },
     {
         "slug": "crayfish",
-        "title": "Crayfish Season in Changsha: When and Where",
+        "title": "Changsha Crayfish (口味虾): When Is the Season and Where Locals Go",
         "kw": "changsha crayfish",
         "desc": "When crayfish season runs in Changsha, how 口味虾 is served, what it costs, and how to eat it without a mess.",
         "body": [
@@ -210,7 +210,7 @@ ARTICLES = [
     },
     {
         "slug": "street-food-safety",
-        "title": "Street Food Safety Tips for Travelers in China",
+        "title": "Street Food Safety in Changsha: What to Check Before You Eat",
         "kw": "china street food safety",
         "desc": "Practical, non-alarmist advice on eating street food safely in China — what actually matters and what doesn't.",
         "body": [
@@ -228,6 +228,30 @@ ARTICLES = [
         ],
     },
 ]
+
+# ============ 统计埋点 ============
+# 填了 ID 就会自动把统计代码插进每一页的 <head>；留空则不插，站点照常工作。
+# 百度统计：https://tongji.baidu.com 建站后给的 hm.js?XXXX 那串哈希
+BAIDU_TONGJI_ID = ""      # 例："a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
+# Microsoft Clarity：https://clarity.microsoft.com 项目 ID
+CLARITY_ID = ""           # 例："abcdefghij"
+
+_snippets = []
+if BAIDU_TONGJI_ID:
+    _snippets.append(
+        '<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");'
+        'hm.src="https://hm.baidu.com/hm.js?' + BAIDU_TONGJI_ID + '";'
+        'var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>'
+    )
+if CLARITY_ID:
+    _snippets.append(
+        '<script type="text/javascript">(function(c,l,a,r,i,t,y){'
+        'c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};'
+        't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;'
+        'y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);'
+        '})(window,document,"clarity","script","' + CLARITY_ID + '");</script>'
+    )
+ANALYTICS_SNIPPET = "\n".join(_snippets)
 
 # ============ 模板 ============
 CSS = """
@@ -267,6 +291,7 @@ def page(title, desc, body_html, is_home=False):
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <link rel="stylesheet" href="{'assets/style.css' if is_home else '../assets/style.css'}">
+{ANALYTICS_SNIPPET}
 </head>
 <body>
 <header class="site"><div class="wrap">
