@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://changsha-street-food.vercel.app/sitemap.xml
+Sitemap: https://changsha-street-food-1fo1lopw8-zap-ab56.vercel.app/sitemap.xml
