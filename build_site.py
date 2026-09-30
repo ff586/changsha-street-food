@@ -16,8 +16,8 @@ SITE = {
     "name": "Changsha Street Food",
     "tagline": "A Practical Guide to Eating on the Streets of Changsha",
     "desc": "Practical, honest guides to Changsha street food — what to eat, what it costs, and where locals actually go.",
-    # Vercel 真实域名（已部署）
-    "url": "https://changsha-street-food-1fo1lopw8-zap-ab56.vercel.app",
+    # Vercel 生产域名（已部署）
+    "url": "https://changsha-street-food.vercel.app",
     "author": "Shao Diefei",
 }
 
