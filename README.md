@@ -1,5 +1,7 @@
 # Changsha Street Food Guide
 
+**Live site:** https://changsha-street-food.vercel.app
+
 A practical English-language content site about street food in Changsha, China.
 
 Built as a **content-operations portfolio project**: the goal is to demonstrate a full
